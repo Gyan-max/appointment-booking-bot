@@ -8,7 +8,7 @@ SERVICE_ACCOUNT_FILE = 'backend/service_account.json'
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 
 # Replace with your calendar ID (can be your email or a calendar's ID)
-CALENDAR_ID = 'primary'  # You can change this to a specific calendar ID
+CALENDAR_ID = 'gyanranjan4427@gmail.com'  # You can change this to a specific calendar ID
 
 def get_calendar_service():
     credentials = service_account.Credentials.from_service_account_file(
@@ -50,8 +50,9 @@ def book_appointment(start: datetime.datetime, end: datetime.datetime, summary: 
     event = {
         'summary': summary,
         'description': description or '',
-        'start': {'dateTime': start.isoformat(), 'timeZone': 'UTC'},
-        'end': {'dateTime': end.isoformat(), 'timeZone': 'UTC'},
+        'start': {'dateTime': start.isoformat(), 'timeZone': 'Asia/Kolkata'},
+        'end': {'dateTime': end.isoformat(), 'timeZone': 'Asia/Kolkata'},
     }
     created_event = service.events().insert(calendarId=CALENDAR_ID, body=event).execute()
+    print(f"Booked event: {created_event.get('htmlLink')}")
     return created_event

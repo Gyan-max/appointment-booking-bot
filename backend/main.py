@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from typing import List, Optional
 import datetime
 from . import calendar_utils
+from .agent import handle_user_message
 
 app = FastAPI()
 
@@ -22,6 +23,9 @@ class BookAppointmentRequest(BaseModel):
     summary: str
     description: Optional[str] = None
 
+class ChatRequest(BaseModel):
+    message: str
+
 @app.post("/check-availability")
 def check_availability(req: AvailabilityRequest):
     available = calendar_utils.check_availability(req.start, req.end)
@@ -39,5 +43,13 @@ def book_appointment(req: BookAppointmentRequest):
     try:
         event = calendar_utils.book_appointment(req.start, req.end, req.summary, req.description)
         return {"event": event}
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+@app.post("/chat")
+def chat(req: ChatRequest):
+    try:
+        response = handle_user_message(req.message)
+        return {"response": response}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
