@@ -1,0 +1,8 @@
+# Google Cloud service account key
+backend/service_account.json
+
+# Python cache and environment
+__pycache__/
+*.pyc
+.env 
+backend/appointment-booking-api-464612-96c47c7d3b26.json
