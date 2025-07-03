@@ -3,12 +3,12 @@ from typing import List, Optional
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 
-# Path to your service account key
+
 SERVICE_ACCOUNT_FILE = 'backend/service_account.json'
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 
 # Replace with your calendar ID (can be your email or a calendar's ID)
-CALENDAR_ID = 'gyanranjan4427@gmail.com'  # You can change this to a specific calendar ID
+CALENDAR_ID = 'gyanranjan4427@gmail.com'  
 
 def get_calendar_service():
     credentials = service_account.Credentials.from_service_account_file(

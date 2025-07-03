@@ -1,6 +1,8 @@
 import streamlit as st
 import requests
 
+BACKEND_URL = "http://127.0.0.1:8000/chat"  # Change this to your deployed backend URL
+
 st.set_page_config(page_title="Appointment Booking Chatbot", page_icon="📅")
 st.title("📅 Appointment Booking Chatbot")
 
@@ -16,7 +18,7 @@ if st.button("Send") and user_input.strip():
     # Send to backend
     try:
         response = requests.post(
-            "http://127.0.0.1:8000/chat",
+            BACKEND_URL,
             json={"message": user_input},
             timeout=30
         )
@@ -29,7 +31,7 @@ if st.button("Send") and user_input.strip():
     st.session_state["messages"].append(("agent", agent_reply))
     # st.experimental_user()
 
-# Display chat history
+
 for sender, msg in st.session_state["messages"]:
     if sender == "user":
         st.markdown(f"**You:** {msg}")
