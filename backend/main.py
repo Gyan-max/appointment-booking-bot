@@ -11,7 +11,7 @@ app = FastAPI()
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, specify your frontend URL
+    allow_origins=["https://appointment-booking-bot-6qnr.onrender.com/"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
