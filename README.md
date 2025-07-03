@@ -27,8 +27,8 @@ A conversational AI agent that helps users book appointments directly into their
 
 ### 1. Clone the repository
 ```bash
-git clone <your-repo-url>
-cd appointment-booking-api
+git clone https://github.com/Gyan-max/appointment-booking-bot.git
+cd appointment-booking-bot
 ```
 
 ### 2. Install dependencies
