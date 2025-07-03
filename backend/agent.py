@@ -5,7 +5,7 @@ import re
 import json
 import pytz
 
-# Simple intent extraction (for demo purposes)
+
 def extract_intent_and_params(user_message: str):
     """
     Use Gemini to extract intent and parameters from the user message.
@@ -27,7 +27,7 @@ def extract_intent_and_params(user_message: str):
     print("Gemini raw response:", gemini_response)
     # Try to extract JSON from Gemini's response
     try:
-        # Remove markdown code block if present
+        
         cleaned = gemini_response.strip()
         if cleaned.startswith('```json'):
             cleaned = cleaned[len('```json'):].strip()
@@ -64,7 +64,7 @@ def handle_user_message(user_message: str) -> str:
     else:
         date_obj = None
 
-    # Parse time
+    
     if time_str and date_obj:
         try:
             if '-' in time_str:
