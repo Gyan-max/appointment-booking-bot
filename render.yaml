@@ -1,16 +1,9 @@
 services:
   - type: web
-    name: appointment-booking-backend
-    env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
-    healthCheckPath: /healthz
-
-  - type: web
     name: appointment-booking-frontend
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: cd frontend && streamlit run app.py --server.port $PORT --server.address 0.0.0.0
+    startCommand: cd frontend && streamlit run main.py --server.port $PORT --server.address 0.0.0.0
     healthCheckPath: /
     envVars:
       - key: BACKEND_URL
