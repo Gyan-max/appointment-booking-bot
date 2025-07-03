@@ -8,7 +8,10 @@ services:
 
   - type: web
     name: appointment-booking-frontend
-    env: node
-    buildCommand: cd frontend && npm install && npm run build
-    startCommand: cd frontend && streamlit run app.py --server.port $PORT --server.address 0.0.0.0 
-    healthCheckPath: / 
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: cd frontend && streamlit run app.py --server.port $PORT --server.address 0.0.0.0
+    healthCheckPath: /
+    envVars:
+      - key: BACKEND_URL
+        value: https://appointment-booking-bot-2.onrender.com/chat 

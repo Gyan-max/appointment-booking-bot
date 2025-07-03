@@ -1,7 +1,9 @@
 import streamlit as st
 import requests
+import os
 
-BACKEND_URL = "http://127.0.0.1:8000/chat"  # Change this to your deployed backend URL
+# Get backend URL from environment variable or use default
+BACKEND_URL = os.getenv("BACKEND_URL", "https://appointment-booking-bot-2.onrender.com/chat")
 
 st.set_page_config(page_title="Appointment Booking Chatbot", page_icon="📅")
 st.title("📅 Appointment Booking Chatbot")
