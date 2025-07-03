@@ -62,29 +62,6 @@ streamlit run frontend/app.py
 
 ---
 
-## 🌐 Deployment (Railway/Render/Fly.io)
-
-### Backend (FastAPI)
-- Use the provided `Procfile`:
-  ```
-  web: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
-  ```
-- Set environment variables (`GEMINI_API_KEY`)
-- Upload `service_account.json` as a secret file (never commit to GitHub)
-
-### Frontend (Streamlit)
-- Use the provided `Procfile-streamlit` (rename to `Procfile`):
-  ```
-  web: streamlit run frontend/app.py --server.port $PORT --server.address 0.0.0.0
-  ```
-- In `frontend/app.py`, set `BACKEND_URL` to your deployed backend's public URL
-
----
-
-## 💬 Usage
-- Open the Streamlit app
-- Chat with the bot (e.g., "Book a meeting tomorrow at 3pm for 30 minutes called Project Sync")
-- The bot will check availability, book the event, and return a link to the event in Google Calendar
 
 
 ## 📝 License
