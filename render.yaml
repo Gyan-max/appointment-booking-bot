@@ -7,4 +7,11 @@ services:
     healthCheckPath: /
     envVars:
       - key: BACKEND_URL
-        value: https://appointment-booking-bot-2.onrender.com/chat 
+        value: https://appointment-booking-bot-2.onrender.com/chat
+
+  - type: web
+    name: appointment-booking-backend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /healthz 
