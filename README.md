@@ -1,3 +1,4 @@
+[watch demo video](./demo.mp4)
 # Appointment Booking Bot
 
 ## 📅 Description
