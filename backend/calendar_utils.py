@@ -11,8 +11,9 @@ SCOPES = ['https://www.googleapis.com/auth/calendar']
 CALENDAR_ID = 'gyanranjan4427@gmail.com'  
 
 def get_calendar_service():
-    credentials = service_account.Credentials.from_service_account_file(
-        SERVICE_ACCOUNT_FILE, scopes=SCOPES
+    aervice_account_info = json.loads(os.environ["service_account"])
+    credentials = service_account.Credentials.from_service_account_info(
+        service_account_info, scopes=SCOPES
     )
     service = build('calendar', 'v3', credentials=credentials)
     return service
