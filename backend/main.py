@@ -48,7 +48,7 @@ def check_availability(req: AvailabilityRequest):
 @app.post("/suggest-slots")
 def suggest_slots(req: SuggestSlotsRequest):
     slots = calendar_utils.suggest_slots(req.date, req.duration_minutes, req.window_start, req.window_end)
-    # Convert datetime objects to isoformat for JSON serialization
+   
     slots_serialized = [(s[0].isoformat(), s[1].isoformat()) for s in slots]
     return {"slots": slots_serialized}
 
