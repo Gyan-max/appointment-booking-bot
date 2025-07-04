@@ -3,7 +3,7 @@ import requests
 import os
 
 
-BACKEND_URL = "https://appointment-booking-bot-2.onrender.com/chat"
+BACKEND_URL = "http://127.0.0.1:8000"
 
 st.set_page_config(page_title="Appointment Booking Chatbot", page_icon="📅")
 st.title("📅 Appointment Booking Chatbot")

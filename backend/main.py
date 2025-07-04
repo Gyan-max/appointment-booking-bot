@@ -1,17 +1,18 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
 import datetime
 from . import calendar_utils
-from .agent import handle_user_message
+from . import agent
+from backend.agent import handle_user_message
 
 app = FastAPI()
 
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://appointment-booking-bot-6qnr.onrender.com/"],  
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -67,3 +68,10 @@ def chat(req: ChatRequest):
         return {"response": response}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
+
+@app.post("/")
+async def root(request: Request):
+    data = await request.json()
+    user_message = data.get("message", "")
+    response = handle_user_message(user_message)
+    return {"response": response}
